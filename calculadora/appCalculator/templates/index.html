@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Decimal To Binary Converter</title>
+   <meta charset="utf-8">
+   <style>
+   #main{
+
+       position:absolute;
+	   top:10%;
+	   left:15%;
+       width:60%;
+       margin:auto;
+	   padding:5%;
+	   background:gray;
+	   font-family: helvetica, sans-serif;
+	   font-size: 1em;
+	   text-align:center;
+
+   }
+   #decimal,#bin,#bit{
+
+	  width:30%;
+	  padding:2%;
+	  margin:2%;
+	  font-size:16px;
+	  font-weight:bold;
+	  font-family:arial,sans-serif;
+	  }
+	 #bit{
+
+	  width:20%;
+	  padding:2%;
+	  margin:2%;
+	  align:center;
+	   font-size:16px;
+	  font-family:arial,sans-serif;
+	  font-weight:bold;
+	  }
+   #con ,#reset{
+
+       width:20%;
+	   padding:2%;
+	   margin:2%;
+	   background-color:#a4a4a4;
+	   }
+   </style>
+ </head>
+ <body>
+ <div id="main">
+<h2>Decimal To Binary Calculator</h2>
+
+<label for="bit" class="dd">Enter number of Bits:</label><br>
+ <input type="text" id="bit"><br>
+ <label for="decimal" class="dd">Decimal Number:</label><br>
+ <input type="text" id="decimal"><br>
+ <label for="bin" class="dd">Binary Number:</label><br>
+ <input type="text" id="bin"><br>
+ <button onclick="decToBinaryConvert()" id="con">Convert</button>
+ <button onclick="decToBinaryReset()" id="reset">Reset</button>
+ </div>
+ <script>
+     function decToBinaryConvert() {
+
+		 var binary = "";
+		 var bitvalue = document.getElementById("bit").value;
+		 var decimal_number = document.getElementById("decimal").value;
+
+		 for(i=0;i<bitvalue;i++)
+		 {
+
+
+		     var remainder = decimal_number % 2;
+
+			 if(remainder == 0)
+			 {
+			     binary = binary + "0";
+
+		     }
+			 else
+			 {
+			     binary = binary + "1";
+
+			 }
+
+			decimal_number = Math.trunc(decimal_number/2);
+
+	    }
+
+		var binaryStr1 = binary.split("");
+		var binaryStr2 = binaryStr1.reverse();
+		var binaryStrFinal = binaryStr2.join("");
+	      document.getElementById("bin").value = binaryStrFinal;
+
+	 }
+	 function decToBinaryReset() {
+
+	 document.getElementById("decimal").value = "";
+	  document.getElementById("bit").value = "";
+	   document.getElementById("bin").value = "";
+	 }
+
+ </script>
+ </body>
+ </html>
